@@ -71,23 +71,32 @@
 	type="text"
 	bind:value={input}
 	{placeholder}
+	autofocus
 	class="text-lg text-gray-300 p-2 mb-3 w-full ring-1 ring-slate-900/10 shadow-sm rounded-md focus:outline-none  focus:ring-2 focus:ring-indigo-500 caret-indigo-500 
-    dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:focus:ring-2 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
+    dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
 />
 <p
-	class="select-all p-6 mb-5 w-md mx-auto text-xl font-medium text-black dark:text-white rounded-lg bg-slate-700"
+	class="select-all p-6 mb-5 w-md mx-auto text-md text-black dark:text-white rounded-lg bg-slate-700"
 >
 	{leeted}
 </p>
 
-<div class="grid grid-flow-row">
+<div class="flex flex-wrap gap-4 p-5">
 	{#each Object.entries(leetTable) as [key, value]}
-		<div>
-			<label>
-				<input type="checkbox" bind:checked={value.enabled} />
-				<span class="select-none dark:text-white">{key}</span>
-			</label>
-			<select multiple bind:value={value.selected}>
+		<div
+			class={`flex-none flex items-center ring-1 p-1 rounded-md cursor-pointer ${
+				value.enabled ? 'bg-indigo-700' : ''
+			}`}
+			on:click={() => (value.enabled = !value.enabled)}
+		>
+			<input type="checkbox" bind:checked={value.enabled} class="appearance-none" />
+			<span class="select-none pr-3 text-slate-900 text-6xl font-bold dark:text-slate-200">{key}</span>
+			<select
+				multiple
+				bind:value={value.selected}
+				class="dark:bg-slate-800 dark:text-white rounded overflow-auto w-10 font-mono"
+                on:click={e => e.stopPropagation()}
+			>
 				{#each value.menu as item}
 					<option value={item}>{item}</option>
 				{/each}
