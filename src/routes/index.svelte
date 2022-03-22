@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../app.css';
 	let input: string = '';
 
 	const panagrams = [
@@ -21,7 +22,8 @@
 
 	let placeholder: string = panagrams[Math.floor(Math.random() * panagrams.length)];
 
-	let basicLeet = ['A', 'B', 'E', 'G', 'I', 'O', 'Q', 'S', 'T', 'Z'];
+	// todo: use with a "reset" button to set enabled state properly
+	// let basicLeet = ['A', 'B', 'E', 'G', 'I', 'O', 'Q', 'S', 'T', 'Z'];
 
 	let leetTable = {
 		A: { enabled: true, selected: ['4'], menu: ['4', '@'] },
@@ -65,16 +67,25 @@
 	$: sortedLeetKeys = Object.keys(leetTable).sort((a, b) => a.localeCompare(b));
 </script>
 
-<input type="text" bind:value={input} {placeholder} />
+<textarea
+	type="text"
+	bind:value={input}
+	{placeholder}
+	class="text-lg text-gray-300 p-2 mb-3 w-full ring-1 ring-slate-900/10 shadow-sm rounded-md focus:outline-none  focus:ring-2 focus:ring-indigo-500 caret-indigo-500 
+    dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:focus:ring-2 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
+/>
+<p
+	class="select-all p-6 mb-5 w-md mx-auto text-xl font-medium text-black dark:text-white rounded-lg bg-slate-700"
+>
+	{leeted}
+</p>
 
-<p>{leeted}</p>
-
-<div class="letter-boxes">
+<div class="grid grid-flow-row">
 	{#each Object.entries(leetTable) as [key, value]}
-		<div class="letter-box">
+		<div>
 			<label>
 				<input type="checkbox" bind:checked={value.enabled} />
-				<span style="user-select:none;">{key}</span>
+				<span class="select-none dark:text-white">{key}</span>
 			</label>
 			<select multiple bind:value={value.selected}>
 				{#each value.menu as item}
@@ -84,43 +95,3 @@
 		</div>
 	{/each}
 </div>
-
-<style>
-	.letter-boxes {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-		grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-		gap: 1em;
-	}
-
-	option {
-		font-family: monospace;
-		padding: 0 1em;
-	}
-
-	.letter-box {
-		display: flex;
-		align-items: center;
-	}
-
-	input[type='text'] {
-		width: 90vw;
-		font-size: 2em;
-		padding: 0.5em;
-		border: 1px solid #ccc;
-		margin: 0.5em;
-		border-radius: 3px;
-		box-shadow: inset 0 0 0 1px #ccc;
-	}
-
-	p {
-		background-color: gray;
-		padding: 0.5em;
-		margin: 0.5em;
-		width: 90vw;
-		border-radius: 3px;
-		font-size: 2em;
-		font-weight: bold;
-		font-family: monospace;
-	}
-</style>
