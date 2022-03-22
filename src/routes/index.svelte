@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { select_multiple_value } from 'svelte/internal';
-
 	let input: string = '';
 
 	const panagrams = [
