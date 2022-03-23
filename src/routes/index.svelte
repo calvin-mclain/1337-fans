@@ -121,7 +121,7 @@
 	</p>
 	<p
 		class:copied={!copied}
-		class={`select-none text-center cursor-pointer text-blue-600 hover:text-blue-500 pb-1 
+		class={`select-none text-center cursor-pointer text-blue-600 dark:text-blue-400 hover:text-blue-500 pb-1 
 		${copied ? ' hidden' : ''}`}
 	>
 		click to copy leet text
