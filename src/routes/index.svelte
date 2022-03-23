@@ -111,7 +111,7 @@
     dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
 />
 <div
-	class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-slate-200/70 dark:bg-slate-700/30 cursor-pointer hover:bg-slate-200/40 dark:hover:bg-slate-800"
+	class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-indigo-50/70 dark:bg-slate-700/30 cursor-pointer hover:bg-indigo-200/40 dark:hover:bg-slate-800"
 	on:click={copyLeeted}
 >
 	<p
