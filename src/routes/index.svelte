@@ -6,7 +6,7 @@
 	import { flip } from 'svelte/animate';
 
 	const [send, receive] = crossfade({
-		duration: d => Math.sqrt(d * 200),
+		duration: (d) => Math.sqrt(d * 200),
 
 		fallback(node, params) {
 			const style = getComputedStyle(node);
@@ -15,39 +15,22 @@
 			return {
 				duration: 600,
 				easing: quintOut,
-				css: t => `
+				css: (t) => `
 					transform: ${transform} scale(${t});
 					opacity: ${t}
 				`
 			};
 		}
 	});
+
 	let input: string = '';
 
-	const panagrams = [
-		"This pangram lists four a's, one b, one c, two d's, twenty-nine e's, eight f's, three g's, five h's, eleven i's, one j, one k, three l's, two m's, twenty-two n's, fifteen o's, one p, one q, seven r's, twenty-six s's, nineteen t's, four u's, five v's, nine w's, two x's, four y's, and one z.",
-		'The quick brown fox jumps over the lazy dog.',
-		'The five boxing wizards jump quickly.',
-		'Sphinx of black quartz, judge my vow.',
-		'Pack my box with five dozen liquor jugs.',
-		'How vexingly quick daft zebras jump!',
-		'Mr. Jock, TV quiz PhD., bags few lynx.',
-		'Two driven jocks help fax my big quiz.',
-		'Brown jars prevented the mixture from freezing too quickly.',
-		'Watch “Jeopardy!”, Alex Trebek’s fun TV quiz game.',
-		'When zombies arrive, quickly fax Judge Pat.',
-		'Waxy and quivering, jocks fumble the pizza.',
-		'The jay, pig, fox, zebra, and my wolves quack!',
-		'The five boxing wizards jump quickly.',
-		'Farmer Jack realized that big yellow quilts were expensive.'
-	];
-
-	let placeholder: string = panagrams[Math.floor(Math.random() * panagrams.length)];
+	let placeholder: string = 'Type here to see the leetspeak conversion.';
 
 	// todo: use with a "reset" button to set enabled state properly
 	// let basicLeet = ['A', 'B', 'E', 'G', 'I', 'O', 'Q', 'S', 'T', 'Z'];
 
-    let uid = 1;
+	let uid = 1;
 
 	let leetTable = {
 		A: { id: uid++, label: 'A', enabled: true, selected: ['4'], menu: ['4', '@'] },
@@ -79,7 +62,7 @@
 	};
 
 	$: {
-        leetTable = Object.fromEntries(
+		leetTable = Object.fromEntries(
 			Object.entries(leetTable).sort(([aKey, aVal], [bKey, bVal]) => {
 				if (aVal.enabled && !bVal.enabled) {
 					return -1;
@@ -90,7 +73,7 @@
 				return aKey.localeCompare(bKey);
 			})
 		) as typeof leetTable;
-    }
+	}
 
 	$: leeted = Array.from((input || placeholder).toUpperCase())
 		.map((c) => {
@@ -102,6 +85,8 @@
 		})
 		.join('');
 </script>
+
+<h1 class="mb-7 text-center text-xl">A leetspeak converter.</h1>
 
 <!-- svelte-ignore a11y-autofocus -->
 <textarea
@@ -121,16 +106,17 @@
 <div class="flex flex-wrap gap-4 p-5">
 	{#each Object.values(leetTable) as leet (leet.id)}
 		<div
-            in:receive={{key: leet.id}}
-            out:send={{key: leet.id}}
-            animate:flip="{{duration: 200}}"
+			in:receive={{ key: leet.id }}
+			out:send={{ key: leet.id }}
+			animate:flip={{ duration: 200 }}
 			class={`flex-none flex items-center ring-1 p-1 rounded-md cursor-pointer ${
 				leet.enabled ? 'bg-indigo-400 dark:bg-indigo-700' : ''
 			}`}
 			on:click={() => (leet.enabled = !leet.enabled)}
 		>
 			<input type="checkbox" bind:checked={leet.enabled} class="appearance-none" />
-			<span class="select-none pr-3 dark:text-white text-slate-900 text-6xl font-bold dark:text-slate-200"
+			<span
+				class="select-none pr-3 dark:text-white text-slate-900 text-6xl font-bold dark:text-slate-200"
 				>{leet.label}</span
 			>
 			<select
