@@ -111,7 +111,7 @@
     dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
 />
 <div
-	class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-slate-200/70 dark:bg-slate-700/30 cursor-pointer hover:bg-slate-200/40 dark:hover:bg-slate-800"
+	class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-indigo-50/70 dark:bg-slate-700/30 cursor-pointer hover:bg-indigo-200/40 dark:hover:bg-slate-800"
 	on:click={copyLeeted}
 >
 	<p
@@ -146,7 +146,7 @@
 					? 'bg-indigo-200 hover:bg-indigo-200 dark:bg-indigo-600 ring-indigo-400 dark:hover:ring-indigo-500 dark:hover:bg-indigo-700'
 					: ''
 			}`}
-			on:click={() => leet.enabled = !leet.enabled}
+			on:click={() => (leet.enabled = !leet.enabled)}
 		>
 			<span
 				class="select-none dark:text-white text-slate-900 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold dark:text-slate-200"
