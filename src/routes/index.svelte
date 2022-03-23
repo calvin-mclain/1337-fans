@@ -109,11 +109,11 @@
 	bind:value={input}
 	{placeholder}
 	autofocus
-	class="text-lg text-gray-300 p-2 mb-3 w-full ring-1 ring-slate-900/10 shadow-sm rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 caret-indigo-500 
+	class="text-lg dark:text-gray-300 p-2 mb-3 w-full ring-1 ring-slate-900/10 shadow-sm rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 caret-indigo-500 
     dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
 />
 <p
-	class="select-all p-6 font-mono mb-5 w-md mx-auto text-md text-black dark:text-white rounded-lg bg-slate-700"
+	class="select-all p-6 font-mono mb-5 w-md mx-auto text-md text-black dark:text-white rounded-lg bg-slate-200 dark:bg-slate-700"
 >
 	{leeted}
 </p>
@@ -125,12 +125,12 @@
             out:send={{key: leet.id}}
             animate:flip="{{duration: 200}}"
 			class={`flex-none flex items-center ring-1 p-1 rounded-md cursor-pointer ${
-				leet.enabled ? 'bg-indigo-700' : ''
+				leet.enabled ? 'bg-indigo-400 dark:bg-indigo-700' : ''
 			}`}
 			on:click={() => (leet.enabled = !leet.enabled)}
 		>
 			<input type="checkbox" bind:checked={leet.enabled} class="appearance-none" />
-			<span class="select-none pr-3 text-slate-900 text-6xl font-bold dark:text-slate-200"
+			<span class="select-none pr-3 dark:text-white text-slate-900 text-6xl font-bold dark:text-slate-200"
 				>{leet.label}</span
 			>
 			<select
