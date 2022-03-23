@@ -86,7 +86,7 @@
 		.join('');
 </script>
 
-<h1 class="mb-7 text-center text-xl">A leetspeak converter.</h1>
+<h1 class="mb-7 text-center text-xl dark:text-white">A leetspeak converter.</h1>
 
 <!-- svelte-ignore a11y-autofocus -->
 <textarea
