@@ -1,6 +1,6 @@
 # See it in action
 
-Hosted here: https://1337-fans.pages.dev/
+Hosted here: https://1337.fans
 
 # create-svelte
 
