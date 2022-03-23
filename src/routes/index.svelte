@@ -35,7 +35,7 @@
 	let leetTable = {
 		A: { id: uid++, label: 'A', enabled: true, selected: '4', menu: ['4', '@'] },
 		B: { id: uid++, label: 'B', enabled: true, selected: '8', menu: ['8', '|3'] },
-		C: { id: uid++, label: 'C', enabled: false, selected: '(', menu: ['(', '<', '{'] },
+		C: { id: uid++, label: 'C', enabled: false, selected: 'K', menu: ['K', '(', '<', '{'] },
 		D: { id: uid++, label: 'D', enabled: false, selected: '|)', menu: ['|)', '|>', '|}'] },
 		E: { id: uid++, label: 'E', enabled: true, selected: '3', menu: ['3', '£'] },
 		F: { id: uid++, label: 'F', enabled: false, selected: '|=', menu: ['|=', '|#'] },
