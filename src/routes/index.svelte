@@ -84,6 +84,17 @@
 			return leetTableEntry.selected[Math.floor(Math.random() * leetTableEntry.selected.length)];
 		})
 		.join('');
+
+	let copied = false;
+
+	$: {
+		copied = false;
+		input = input;
+	}
+	function copyLeeted() {
+		navigator.clipboard.writeText(leeted);
+		copied = true;
+	}
 </script>
 
 <h1 class="mb-7 text-center text-xl dark:text-white">A leetspeak converter.</h1>
@@ -97,11 +108,30 @@
 	class="text-lg dark:text-gray-300 p-2 mb-3 w-full ring-1 ring-slate-900/10 shadow-sm rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 caret-indigo-500 
     dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
 />
-<p
-	class="select-all p-6 font-mono mb-5 w-md mx-auto text-md text-black dark:text-white rounded-lg bg-slate-200 dark:bg-slate-700"
+<div
+	class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-slate-200 dark:bg-slate-700 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-800"
+	on:click={copyLeeted}
 >
-	{leeted}
-</p>
+	<p
+		type="text"
+		class="font-mono mx-6 mt-6 mb-2 p-2 ring-1 rounded-md w-xl dark:text-gray-300 dark:highlight-white/5 dark:bg-slate-800 cursor-pointer"
+		
+	>{leeted}</p>
+		<p
+		class:copied={!copied}
+		class={`select-none text-center text-sm cursor-pointer text-blue-600 hover:text-blue-500 pb-1 
+		${copied ? ' hidden' : ''}`}
+	>
+		click to copy leet text
+	</p>
+	<p
+		class:copied
+		class={`select-none text-center text-sm font-bold text-emerald-600 dark:text-emerald-300 pb-1
+		${copied ? '' : ' hidden'}`}
+	>
+		leet text copied to clipboard
+	</p>
+</div>
 
 <div class="flex flex-wrap gap-4 p-5">
 	{#each Object.values(leetTable) as leet (leet.id)}
