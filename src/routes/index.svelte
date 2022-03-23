@@ -33,32 +33,32 @@
 	let uid = 1;
 
 	let leetTable = {
-		A: { id: uid++, label: 'A', enabled: true, selected: ['4'], menu: ['4', '@'] },
-		B: { id: uid++, label: 'B', enabled: true, selected: ['8'], menu: ['8', '|3'] },
-		C: { id: uid++, label: 'C', enabled: false, selected: ['('], menu: ['(', '<', '{'] },
-		D: { id: uid++, label: 'D', enabled: false, selected: ['|)'], menu: ['|)', '|>', '|}'] },
-		E: { id: uid++, label: 'E', enabled: true, selected: ['3'], menu: ['3', '£'] },
-		F: { id: uid++, label: 'F', enabled: false, selected: ['|='], menu: ['|=', '|#'] },
-		G: { id: uid++, label: 'G', enabled: true, selected: ['6'], menu: ['6', '9'] },
-		H: { id: uid++, label: 'H', enabled: false, selected: ['|-|'], menu: ['|-|', '#-'] },
-		I: { id: uid++, label: 'I', enabled: true, selected: ['1'], menu: ['1', '!', '|'] },
-		J: { id: uid++, label: 'J', enabled: false, selected: ['_|'], menu: ['_|', '_/'] },
-		K: { id: uid++, label: 'K', enabled: false, selected: ['|<'], menu: ['|<', '|{'] },
-		L: { id: uid++, label: 'L', enabled: false, selected: ['|_'], menu: ['|_', '|'] },
-		M: { id: uid++, label: 'M', enabled: false, selected: ['|V'], menu: ['|V', '|\\/|'] },
-		N: { id: uid++, label: 'N', enabled: false, selected: ['|\\|'], menu: ['|\\|', '|\\/'] },
-		O: { id: uid++, label: 'O', enabled: true, selected: ['0'], menu: ['0', '()', '[]'] },
-		P: { id: uid++, label: 'P', enabled: false, selected: ['|*'], menu: ['|*', '|>'] },
-		Q: { id: uid++, label: 'Q', enabled: true, selected: ['9'], menu: ['9', '(,)'] },
-		R: { id: uid++, label: 'R', enabled: false, selected: ['|2'], menu: ['|2', '|?'] },
-		S: { id: uid++, label: 'S', enabled: true, selected: ['5'], menu: ['5', '$'] },
-		T: { id: uid++, label: 'T', enabled: true, selected: ['7'], menu: ['7', '+'] },
-		U: { id: uid++, label: 'U', enabled: false, selected: ['|_|'], menu: ['|_|', '|_\\|'] },
-		V: { id: uid++, label: 'V', enabled: false, selected: ['\\/'], menu: ['\\/'] },
-		W: { id: uid++, label: 'W', enabled: false, selected: ['\\/\\'], menu: ['\\/\\/'] },
-		X: { id: uid++, label: 'X', enabled: false, selected: ['><'], menu: ['><'] },
-		Y: { id: uid++, label: 'Y', enabled: false, selected: ['`/'], menu: ['`/'] },
-		Z: { id: uid++, label: 'Z', enabled: true, selected: ['2'], menu: ['2'] }
+		A: { id: uid++, label: 'A', enabled: true, selected: '4', menu: ['4', '@'] },
+		B: { id: uid++, label: 'B', enabled: true, selected: '8', menu: ['8', '|3'] },
+		C: { id: uid++, label: 'C', enabled: false, selected: '(', menu: ['(', '<', '{'] },
+		D: { id: uid++, label: 'D', enabled: false, selected: '|)', menu: ['|)', '|>', '|}'] },
+		E: { id: uid++, label: 'E', enabled: true, selected: '3', menu: ['3', '£'] },
+		F: { id: uid++, label: 'F', enabled: false, selected: '|=', menu: ['|=', '|#'] },
+		G: { id: uid++, label: 'G', enabled: true, selected: '6', menu: ['6', '9'] },
+		H: { id: uid++, label: 'H', enabled: false, selected: '|-|', menu: ['|-|', '#-'] },
+		I: { id: uid++, label: 'I', enabled: true, selected: '1', menu: ['1', '!', '|'] },
+		J: { id: uid++, label: 'J', enabled: false, selected: '_|', menu: ['_|', '_/'] },
+		K: { id: uid++, label: 'K', enabled: false, selected: '|<', menu: ['|<', '|{'] },
+		L: { id: uid++, label: 'L', enabled: false, selected: '|_', menu: ['|_', '|'] },
+		M: { id: uid++, label: 'M', enabled: false, selected: '|V', menu: ['|V', '|\\/|'] },
+		N: { id: uid++, label: 'N', enabled: false, selected: '|\\|', menu: ['|\\|', '|\\/'] },
+		O: { id: uid++, label: 'O', enabled: true, selected: '0', menu: ['0', '()', '[]'] },
+		P: { id: uid++, label: 'P', enabled: false, selected: '|*', menu: ['|*', '|>'] },
+		Q: { id: uid++, label: 'Q', enabled: true, selected: '9', menu: ['9', '(,)'] },
+		R: { id: uid++, label: 'R', enabled: false, selected: '|2', menu: ['|2', '|?'] },
+		S: { id: uid++, label: 'S', enabled: true, selected: '5', menu: ['5', '$'] },
+		T: { id: uid++, label: 'T', enabled: true, selected: '7', menu: ['7', '+'] },
+		U: { id: uid++, label: 'U', enabled: false, selected: '|_|', menu: ['|_|', '|_\\|'] },
+		V: { id: uid++, label: 'V', enabled: false, selected: '\\/', menu: ['\\/'] },
+		W: { id: uid++, label: 'W', enabled: false, selected: '\\/\\', menu: ['\\/\\/'] },
+		X: { id: uid++, label: 'X', enabled: false, selected: '><', menu: ['><'] },
+		Y: { id: uid++, label: 'Y', enabled: false, selected: '`/', menu: ['`/'] },
+		Z: { id: uid++, label: 'Z', enabled: true, selected: '2', menu: ['2'] }
 	};
 
 	$: {
@@ -75,13 +75,14 @@
 		) as typeof leetTable;
 	}
 
-	$: leeted = Array.from((input || placeholder).toUpperCase())
+	$: leeted = Array.from((input || placeholder))
 		.map((c) => {
-			const leetTableEntry = leetTable[c];
+			const leetTableEntry = leetTable[c.toUpperCase()];
 			if (!leetTableEntry?.enabled) {
-				return c;
+				return Math.random() > 0.5 ? c : c.toUpperCase();
+
 			}
-			return leetTableEntry.selected[Math.floor(Math.random() * leetTableEntry.selected.length)];
+			return leetTableEntry.selected;
 		})
 		.join('');
 
@@ -109,7 +110,7 @@
     dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
 />
 <div
-	class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-slate-200 dark:bg-slate-700 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-800"
+	class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-slate-100 dark:bg-slate-700 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800"
 	on:click={copyLeeted}
 >
 	<p
@@ -150,13 +151,12 @@
 				>{leet.label}</span
 			>
 			<select
-				multiple
 				bind:value={leet.selected}
 				class="dark:bg-slate-800 dark:text-white rounded overflow-auto w-10 font-mono"
 				on:click={(e) => e.stopPropagation()}
 			>
 				{#each leet.menu as item}
-					<option value={item}>{item}</option>
+					<option value={item} selected={item === leet.selected}>{item}</option>
 				{/each}
 			</select>
 		</div>
