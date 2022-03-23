@@ -110,7 +110,7 @@
 			out:send={{ key: leet.id }}
 			animate:flip={{ duration: 200 }}
 			class={`flex-none flex items-center ring-1 p-1 rounded-md cursor-pointer ${
-				leet.enabled ? 'bg-indigo-400 dark:bg-indigo-700' : ''
+				leet.enabled ? 'bg-indigo-400 dark:bg-indigo-600 ring-indigo-400' : ''
 			}`}
 			on:click={() => (leet.enabled = !leet.enabled)}
 		>
