@@ -110,7 +110,7 @@
   bind:value={input}
   {placeholder}
   autofocus
-  class="text-lg dark:text-gray-300 p-2 mb-3 w-full ring-1 ring-indigo-500 shadow-md placeholder:text-black/70 dark:placeholder:text-slate-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 caret-indigo-500
+  class="appearance-none text-lg dark:text-gray-300 p-2 mb-3 w-full ring-1 ring-indigo-500 shadow-md placeholder:text-black/70 dark:placeholder:text-slate-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 caret-indigo-500
     dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
 ></textarea>
 <div
