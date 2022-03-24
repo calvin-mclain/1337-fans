@@ -8,7 +8,7 @@
   const [send, receive] = crossfade({
     duration: (d) => Math.sqrt(d * 200),
 
-    fallback(node, params) {
+    fallback(node) {
       const style = getComputedStyle(node);
       const transform = style.transform === 'none' ? '' : style.transform;
 
@@ -23,9 +23,9 @@
     }
   });
 
-  let input: string = '';
+  let input = '';
 
-  let placeholder: string = 'Type here to see the leetspeak conversion.';
+  let placeholder = 'Type here to see the leetspeak conversion.';
   let copied = false;
 
   // todo: use with a "reset" button to set enabled state properly
@@ -97,9 +97,12 @@
   }
 </script>
 
-<h1 class="mb-5 lg:mb-16 lg:mt-5 text-center font-semibold text-xl md:text-2xl dark:text-white">
+<p class="text-2xl md:text-4xl text-center font-semibold font-mono dark:text-white">
+  1337.fans
+</p>
+<p class="mb-5 md:mb-16 md:mt-5 text-center text-lg md:text-xl dark:text-white">
   A leetspeak converter.
-</h1>
+</p>
 
 <!-- svelte-ignore a11y-autofocus -->
 <textarea
@@ -107,9 +110,9 @@
   bind:value={input}
   {placeholder}
   autofocus
-  class="text-lg dark:text-gray-300 p-2 mb-3 w-full ring-1 ring-slate-900/10 shadow-sm placeholder:text-black dark:placeholder:text-slate-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 caret-indigo-500 
+  class="text-lg dark:text-gray-300 p-2 mb-3 w-full ring-1 ring-indigo-500 shadow-md placeholder:text-black/70 dark:placeholder:text-slate-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 caret-indigo-500
     dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:ring-2 dark:ring-indigo-800 dark:focus:ring-indigo-500 dark:focus:bg-slate-900"
-/>
+></textarea>
 <div
   class="p-1 mx-auto text-md text-black dark:text-white rounded-lg bg-indigo-50/70 dark:bg-slate-700/30 cursor-pointer hover:bg-indigo-200/40 dark:hover:bg-slate-800"
   on:click={copyLeeted}
@@ -121,7 +124,7 @@
   </p>
   <p
     class:copied={!copied}
-    class={`select-none text-center cursor-pointer text-blue-600 dark:text-blue-400 hover:text-blue-500 pb-1 
+    class={`select-none text-center cursor-pointer text-blue-600 dark:text-blue-400 hover:text-blue-500 pb-1
         ${copied ? ' hidden' : ''}`}
   >
     click to copy leet text
@@ -150,8 +153,7 @@
     >
       <span
         class="select-none dark:text-white text-slate-900 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold dark:text-slate-200"
-        >{leet.label}</span
-      >
+        >{leet.label}</span>
       <select
         bind:value={leet.selected}
         class="dark:bg-slate-800 dark:text-white rounded overflow-auto max-w-6 sm:w-3 md:w-8 lg:w-10 font-mono"
